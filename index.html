@@ -1,23 +1,10 @@
-<<<<<<< HEAD
-<!doctype html> 
-<html> 
-    <head> 
-        <meta charset="utf-8" /> 
-        <meta name="viewport" content="width=device-width,initial-scale=1" /> 
-        <title>SANJAY</title> 
-    </head> 
-    <body> 
-        <div id="root"></div> 
-        <script type="module" src="/src/main.jsx"></script> 
-    </body> </html>
-=======
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Sanjay — backend engineer, builder, and someone who likes understanding how things work." />
-  <link rel="icon" href="/favicon.png" type="image/png" />
+  <link rel="icon" href="favicon.png" type="image/png" />
   <title>Sanjay</title>
 
   <style>
@@ -36,9 +23,10 @@
     html,
     body {
       width: 100%;
-      height: 100%;
+      min-height: 100%;
       margin: 0;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
 
     body {
@@ -67,7 +55,7 @@
 
     .page {
       width: min(calc(100% - clamp(64px, 7vw, 116px)), var(--max-width));
-      height: 100dvh;
+      min-height: 100dvh;
       margin: 0 auto;
       padding: clamp(28px, 4.7vh, 52px) 0 clamp(22px, 3.5vh, 36px);
       display: grid;
@@ -138,7 +126,8 @@
     .text-link:hover,
     .text-link:focus-visible {
       color: var(--blue-dark);
-      outline: none;
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
     }
 
     .text-link:hover::after,
@@ -328,7 +317,8 @@
       color: var(--paper);
       background: var(--blue);
       transform: translateY(-2px);
-      outline: none;
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
     }
 
     @media (max-height: 770px) and (min-width: 851px) {
@@ -364,14 +354,10 @@
     }
 
     @media (max-width: 850px) {
-      html,
-      body { overflow: auto; }
-
       body::before { display: none; }
 
       .page {
         width: min(calc(100% - 32px), var(--max-width));
-        height: auto;
         min-height: 100dvh;
         padding: 30px 0 24px;
       }
@@ -523,7 +509,6 @@
       </div>
 
       <nav class="connect" aria-label="Connect with Sanjay">
-        <a class="button" href="mailto:your-email@example.com">Email</a>
         <a class="button" href="https://www.linkedin.com/in/sanjay-s-8ab0b2264/" target="_blank" rel="noreferrer">LinkedIn</a>
         <a class="button" href="https://github.com/xSanYay" target="_blank" rel="noreferrer">GitHub</a>
       </nav>
@@ -531,7 +516,3 @@
   </main>
 </body>
 </html>
-<<<<<<< HEAD
-=======
->>>>>>> 5ffee80 (add favicon)
->>>>>>> origin/main
