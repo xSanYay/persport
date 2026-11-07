@@ -29,6 +29,26 @@
     .intro { margin: 0; font-size: 18px; color: var(--muted); }
     nav { display: flex; flex-wrap: wrap; gap: 12px 22px; }
     nav a { white-space: nowrap; }
+    nav.button-link {
+      min-height: 41px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 18px;
+      border-radius: 2px;
+      min-width: 116px;
+      color: var(--blue);
+      border: 1px solid rgba(23, 79, 156, 0.58);
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 150ms ease, background 150ms ease, transform 150ms ease;
+      font-size: 0.88rem;
+    }
+    nav.button-link:hover {
+      color: var(--paper);
+      background: var(--blue);
+      transform: translateY(-2px);
+    }
     .columns { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 56px; padding: 28px 0; }
     .label { margin: 0 0 14px; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
     h3 { margin: 0; font-size: 23px; font-weight: 400; line-height: 1.2; }
@@ -94,8 +114,8 @@
         <p class="intro">Python backends, AI agents, search &amp; integrations.</p>
       </div>
       <nav aria-label="Explore and connect">
-        <a href="https://github.com/xSanYay" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="https://www.linkedin.com/in/sanjay-s-8ab0b2264/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="button-link" href="https://github.com/xSanYay" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="button-link" href="https://www.linkedin.com/in/sanjay-s-8ab0b2264/" target="_blank" rel="noreferrer">LinkedIn</a>
       </nav>
     </header>
 
@@ -115,6 +135,7 @@
           </ul>
           <div class="synapse">
             <h4>A multitenant iPaaS</h4>
+            <p>Built a multitenant integration platform for external customers.</p>
             <p>Jan 2025 – Apr 2025</p>
             <p class="capabilities">Connectors · OpenAPI integration builder · Reusable package · LLM connectors · MCP support for existing integrations</p>
           </div>
@@ -138,7 +159,7 @@
           <h2 class="label" id="education-title">Education</h2>
           <h3>RV College of Engineering</h3>
           <p>BE · Electronics &amp; Communication</p>
-          <p class="meta details">2021–2025 · CGPA 8.14</p>
+          <p class="meta details">2021–2025 · CGPA 8.54</p>
           <ul class="college">
             <li>Software Lead · Astra Robotics</li>
             <li>Chair · IEEE RAS, RVCE</li>
