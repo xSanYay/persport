@@ -311,12 +311,8 @@
     }
 
     .bottom {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 30px;
-      align-items: center;
+      display: block;
       padding-top: clamp(14px, 2vh, 21px);
-      border-top: 1px solid var(--line);
     }
 
     .chips,
@@ -360,6 +356,18 @@
       color: var(--paper);
       background: var(--blue);
       transform: translateY(-2px);
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+    }
+
+    .chip a {
+      color: var(--paper);
+      background: var(--blue);
+    }
+    .chip a:hover,
+    .chip a:focus-visible {
+      color: var(--paper);
+      background: var(--blue-dark);
       outline: 2px solid var(--blue);
       outline-offset: 3px;
     }
@@ -544,10 +552,10 @@
         <span class="chip">Python</span>
         <span class="chip">Finance</span>
         <span class="chip">Hardware</span>
+        <a class="chip" href="./">Home</a>
       </div>
 
       <nav class="connect" aria-label="Connect with Sanjay">
-        <a href="./">Home</a>
       </nav>
     </section>
   </main>
