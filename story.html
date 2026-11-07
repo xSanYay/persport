@@ -68,8 +68,10 @@
       display: grid;
       grid-template-columns: minmax(0, 1.18fr) minmax(360px, 0.82fr);
       gap: clamp(54px, 7vw, 108px);
-      align-items: center;
+      align-items: start;
     }
+
+    .timeline { position: sticky; top: 36px; }
 
     .intro,
     .timeline { min-width: 0; }
@@ -85,16 +87,39 @@
     h1 span { color: var(--blue); }
 
     .story {
-      max-width: 780px;
-      padding-left: clamp(18px, 2vw, 26px);
-      border-left: 2px solid var(--blue);
+      max-width: 65ch;
       display: grid;
-      gap: clamp(12px, 1.65vh, 18px);
-      font-size: clamp(0.8rem, 0.96vw, 0.99rem);
-      line-height: 1.48;
+      gap: 24px;
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    .story-section {
+      padding: 12px 18px;
+      border-left: 2px solid transparent;
+      border-radius: 0 6px 6px 0;
+      scroll-margin-top: 24px;
+      transition: background 180ms ease, border-color 180ms ease;
     }
 
     .story p { margin: 0; }
+    .story p + p { margin-top: 16px; }
+    .date { text-decoration: none; }
+    .date:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+
+    .content:has(.tree-item[data-story="internet"]:hover) #story-internet,
+    .content:has(.tree-item[data-story="internet"]:focus-within) #story-internet,
+    .content:has(.tree-item[data-story="youtube"]:hover) #story-youtube,
+    .content:has(.tree-item[data-story="youtube"]:focus-within) #story-youtube,
+    .content:has(.tree-item[data-story="robotics"]:hover) #story-robotics,
+    .content:has(.tree-item[data-story="robotics"]:focus-within) #story-robotics,
+    .content:has(.tree-item[data-story="rvce"]:hover) #story-rvce,
+    .content:has(.tree-item[data-story="rvce"]:focus-within) #story-rvce,
+    .content:has(.tree-item[data-story="now"]:hover) #story-now,
+    .content:has(.tree-item[data-story="now"]:focus-within) #story-now {
+      background: rgba(23, 79, 156, 0.065);
+      border-left-color: rgba(23, 79, 156, 0.55);
+    }
 
     code {
       padding: 0 0.25em;
@@ -333,12 +358,6 @@
         font-size: clamp(3rem, 5.25vw, 5.6rem);
       }
 
-      .story {
-        gap: 8px;
-        font-size: clamp(0.72rem, 0.84vw, 0.88rem);
-        line-height: 1.37;
-      }
-
       .tree-item { padding-bottom: 10px; }
 
       .tree-item p { font-size: clamp(0.67rem, 0.74vw, 0.78rem); }
@@ -368,7 +387,7 @@
         gap: 48px;
       }
 
-      .timeline { padding-left: 0; }
+      .timeline { padding-left: 0; position: static; }
 
       .bottom {
         grid-template-columns: 1fr;
@@ -379,7 +398,7 @@
     @media (max-width: 540px) {
       h1 { font-size: clamp(3.2rem, 17vw, 5rem); }
 
-      .story { padding-left: 15px; }
+      .story-section { padding: 10px 12px; }
 
       .branch { grid-template-columns: 1fr; }
 
@@ -412,44 +431,52 @@
       <section class="intro" aria-label="My story">
 
         <div class="story">
-          <p>
+          <div class="story-section" id="story-internet">
+<p>
             I started with HTML when I was in 5th. Bootstrap 2 was everywhere,
             <code>&lt;marquee&gt;</code> still looked cool, and I mostly built random pages
             because making something appear on a screen felt amazing.
           </p>
-
-          <p>
+<p>
             By 8th, I had moved on to Android. I was rooting phones, editing APKs to get
             free gems, messing with system files, and eventually built my first app using
             one of those block-based app builders. Proper tutorials were not exactly easy
             to find then, especially when 100 MB of internet cost around ₹45, so most of
             it was just me trying things and hoping I did not break the phone.
           </p>
-
-          <p>
+          </div>
+          <div class="story-section" id="story-youtube">
+<p>
             In 2016, I started a YouTube channel where I mixed songs with videos.
             <a class="text-link" href="https://www.youtube.com/watch?v=3zSJoPhsHBo" target="_blank" rel="noreferrer">One of them reached 8 million views</a>.
             I stopped because of my 10th boards, but I still remember watching it compete
             with <em>Sunflower</em>, which is funny because I still love that song.
           </p>
-
-          <p>
+          </div>
+          <div class="story-section" id="story-robotics">
+<p>
             Later, I spent an unnecessary amount of time deciding between C++ and Python.
             I finally picked Python because building a GUI looked easier. That decision
             took me into OpenCV, face detection, ArUco markers, robotics, Astra
             Robotics, and IEEE RAS.
           </p>
-
-          <p>
+          </div>
+          <div class="story-section" id="story-rvce">
+<p>From 2021 to 2025, I studied Electronics and Communication at RVCE, explored internships and projects, and figured out what I enjoyed building.</p>
+          </div>
+          <div class="story-section" id="story-now">
+<p>
             Today, I work as a backend engineer at
             <a class="text-link" href="https://happyfox.com" target="_blank" rel="noreferrer">HappyFox</a>,
             mostly building AI products and the systems around them. I am also working on
             <a class="text-link" href="https://protodeccan.com" target="_blank" rel="noreferrer">ProtoDeccan</a>,
             not because I have everything figured out, but because I wanted to learn by
-            building something of my own. And yeah, I spend probably too much time
+            building something of my own.</p>
+          <p>And yeah, I spend probably too much time
             thinking about financial markets, businesses, incentives, and why almost
             every confident prediction eventually goes wrong.
           </p>
+          </div>
         </div>
       </section>
 
@@ -457,32 +484,32 @@
         <p class="timeline-title">Journey so far</p>
 
         <ol class="tree">
-          <li class="tree-item">
-            <span class="date">2013–2016</span>
+          <li class="tree-item" data-story="internet">
+            <a class="date" href="#story-internet">2013–2016</a>
             <h2>Started with the internet</h2>
             <p>HTML, Bootstrap, Android experiments, rooting, APK editing, and my first app.</p>
           </li>
 
-          <li class="tree-item">
-            <span class="date">2016</span>
+          <li class="tree-item" data-story="youtube">
+            <a class="date" href="#story-youtube">2016</a>
             <h2>YouTube happened</h2>
             <p>I started mixing songs with videos. One of them reached 8 million views.</p>
           </li>
 
-          <li class="tree-item">
-            <span class="date">2017–2021</span>
+          <li class="tree-item" data-story="robotics">
+            <a class="date" href="#story-robotics">2017–2021</a>
             <h2>Python, OpenCV, and robotics</h2>
             <p>Face detection, ArUco markers, Astra Robotics, IEEE RAS, and a lot of random experiments.</p>
           </li>
 
-          <li class="tree-item">
-            <span class="date">2021–2025</span>
+          <li class="tree-item" data-story="rvce">
+            <a class="date" href="#story-rvce">2021–2025</a>
             <h2>RVCE</h2>
             <p>Electronics and Communication, internships, projects, and figuring out what I actually enjoyed building.</p>
           </li>
 
-          <li class="tree-item">
-            <span class="date">2023–Present</span>
+          <li class="tree-item" data-story="now">
+            <a class="date" href="#story-now">2023–Present</a>
 
             <div class="branch">
               <div class="branch-card">
