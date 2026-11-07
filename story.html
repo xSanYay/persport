@@ -120,7 +120,7 @@
     }
 
     code {
-      padding: 0 0.25em;
+      padding: 0 0.2em;
       border: 1px solid var(--line);
       background: rgba(23, 25, 28, 0.035);
       font-family: "SFMono-Regular", Consolas, monospace;
@@ -128,7 +128,6 @@
     }
 
     .text-link {
-      position: relative;
       color: var(--blue);
       font-weight: 680;
       text-decoration: none;
@@ -147,14 +146,13 @@
     }
 
     .text-link:hover,
-    .text-link:focus-visible {
+    .text-link:focus-visible { 
       color: var(--blue-dark);
-      outline: 2px solid var(--blue);
-      outline-offset: 3px;
+      outline: none;
     }
 
     .text-link:hover::after,
-    .text-link:focus-visible::after { transform: scaleX(0.45); }
+    .text-link:focus-visible::after { transform: scaleX(0); }
 
     .timeline { padding-left: 0; }
 
@@ -316,7 +314,6 @@
       gap: 30px;
       align-items: center;
       padding-top: clamp(14px, 2vh, 21px);
-      border-top: 1px solid var(--line);
     }
 
     .chips,
@@ -548,8 +545,6 @@
 
       <nav class="connect" aria-label="Connect with Sanjay">
         <a class="button" href="./">← Home</a>
-        <a class="button" href="https://www.linkedin.com/in/sanjay-s-8ab0b2264/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="button" href="https://github.com/xSanYay" target="_blank" rel="noreferrer">GitHub</a>
       </nav>
     </section>
   </main>
