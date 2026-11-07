@@ -1,0 +1,1014 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Sanjay — backend engineer who loves building useful things."
+  />
+  <link rel="icon" href="./favicon.png" type="image/png" />
+  <title>My story — Sanjay</title>
+
+  <style>
+    :root {
+      --paper: #f3efe6;
+      --ink: #17191c;
+      --muted: #666965;
+      --line: rgba(23, 25, 28, 0.2);
+      --line-strong: rgba(23, 25, 28, 0.34);
+      --blue: #174f9c;
+      --blue-dark: #103b77;
+      --blue-soft: rgba(23, 79, 156, 0.07);
+      --max-width: 1440px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    body {
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(23, 25, 28, 0.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(23, 25, 28, 0.026) 1px, transparent 1px),
+        var(--paper);
+      background-size: 40px 40px;
+      font-family:
+        Inter,
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      text-rendering: optimizeLegibility;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 18px;
+      border: 1px solid rgba(23, 25, 28, 0.25);
+      pointer-events: none;
+    }
+
+    ::selection {
+      color: var(--paper);
+      background: var(--blue);
+    }
+
+    .page {
+      width: min(calc(100% - clamp(64px, 7vw, 116px)), var(--max-width));
+      height: 100dvh;
+      margin: 0 auto;
+      padding: clamp(28px, 4.4vh, 50px) 0 clamp(22px, 3.3vh, 34px);
+      display: grid;
+      grid-template-rows: minmax(0, 1fr) auto;
+      gap: clamp(18px, 2.6vh, 28px);
+    }
+
+    .content {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(500px, 0.95fr);
+      gap: clamp(54px, 6.6vw, 104px);
+      align-items: center;
+    }
+
+    .intro,
+    .journey {
+      min-width: 0;
+    }
+
+    h1 {
+      margin: 0 0 clamp(15px, 2.2vh, 23px);
+      font-size: clamp(3.5rem, 6.05vw, 6.75rem);
+      line-height: 0.92;
+      letter-spacing: -0.07em;
+      font-weight: 790;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .intro-line {
+      max-width: 700px;
+      margin: 0 0 clamp(22px, 3.2vh, 34px);
+      color: var(--muted);
+      font-size: clamp(0.92rem, 1.08vw, 1.08rem);
+      line-height: 1.52;
+    }
+
+    .hover-note {
+      color: var(--blue);
+      font-size: 0.76rem;
+      font-weight: 720;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .story-viewer {
+      height: clamp(285px, 38vh, 360px);
+      max-width: 790px;
+      padding: clamp(19px, 2.2vw, 28px);
+      border-top: 1px solid var(--line-strong);
+      border-bottom: 1px solid var(--line-strong);
+      background: rgba(243, 239, 230, 0.72);
+      overflow: hidden;
+    }
+
+    .story-inner {
+      height: 100%;
+      overflow: auto;
+      padding-right: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--line-strong) transparent;
+      transition:
+        opacity 110ms ease,
+        transform 110ms ease;
+    }
+
+    .story-inner.is-changing {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+
+    .story-kicker {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 0.71rem;
+      font-weight: 780;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .story-title {
+      margin: 0 0 13px;
+      font-size: clamp(1.18rem, 1.5vw, 1.58rem);
+      line-height: 1.2;
+    }
+
+    .story-copy {
+      font-size: clamp(0.84rem, 0.96vw, 0.98rem);
+      line-height: 1.57;
+    }
+
+    .story-copy p {
+      margin: 0;
+    }
+
+    .story-copy code {
+      padding: 0 0.22em;
+      border: 1px solid var(--line);
+      background: rgba(23, 25, 28, 0.035);
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 0.88em;
+    }
+
+    .text-link {
+      position: relative;
+      color: var(--blue);
+      font-weight: 680;
+      text-decoration: none;
+    }
+
+    .text-link::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -2px;
+      left: 0;
+      height: 1px;
+      background: currentColor;
+      transform-origin: left;
+      transition: transform 150ms ease;
+    }
+
+    .text-link:hover {
+      color: var(--blue-dark);
+    }
+
+    .text-link:hover::after {
+      transform: scaleX(0.45);
+    }
+
+    .text-link:focus-visible {
+      outline: none;
+      box-shadow: 0 2px 0 var(--blue);
+    }
+
+    .journey {
+      padding-left: clamp(12px, 2vw, 28px);
+    }
+
+    .journey-title {
+      margin: 0 0 clamp(17px, 2.3vh, 25px);
+      color: var(--blue);
+      font-size: clamp(0.69rem, 0.77vw, 0.8rem);
+      font-weight: 780;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .journey-title::after {
+      content: "";
+      display: block;
+      width: 42px;
+      height: 2px;
+      margin-top: 10px;
+      background: var(--blue);
+    }
+
+
+    .tree-root,
+    .tree-branches {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tree-root {
+      position: relative;
+      display: grid;
+      gap: clamp(17px, 2.2vh, 25px);
+      padding: 2px 0;
+    }
+
+    /* One continuous central trunk. */
+    .tree-root::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      bottom: 18px;
+      left: 50%;
+      width: 1px;
+      background: var(--line-strong);
+      transform: translateX(-50%);
+    }
+
+    .tree-group {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      justify-items: center;
+      gap: 11px;
+    }
+
+    .node-button {
+      position: relative;
+      z-index: 3;
+      width: min(250px, 72%);
+      padding: 8px 15px 7px;
+      border: 0;
+      background: var(--paper);
+      color: inherit;
+      font: inherit;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .node-button::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -7px;
+      width: 11px;
+      height: 11px;
+      border: 2px solid var(--blue);
+      border-radius: 50%;
+      background: var(--paper);
+      transform: translate(-50%, -50%);
+      transition:
+        background 140ms ease,
+        transform 140ms ease;
+    }
+
+    .node-button::after {
+      content: "";
+      position: absolute;
+      right: -7px;
+      bottom: 0;
+      left: -7px;
+      height: 1px;
+      background: transparent;
+      transition: background 140ms ease;
+    }
+
+    .node-button:hover,
+    .node-button:focus-visible,
+    .node-button.is-active {
+      color: var(--blue);
+      outline: none;
+    }
+
+    .node-button:hover::before,
+    .node-button:focus-visible::before,
+    .node-button.is-active::before {
+      background: var(--blue);
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+
+    .node-button:hover::after,
+    .node-button:focus-visible::after,
+    .node-button.is-active::after {
+      background: var(--blue);
+    }
+
+    .node-date {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--blue);
+      font-size: 0.65rem;
+      font-weight: 760;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .node-button h2 {
+      margin: 0;
+      font-size: clamp(0.88rem, 0.98vw, 1rem);
+      line-height: 1.28;
+    }
+
+    .tree-branches {
+      position: relative;
+      z-index: 2;
+      width: min(100%, 470px);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      padding-top: 16px;
+    }
+
+    /* Horizontal branch connecting the two leaves. */
+    .tree-branches::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 25%;
+      right: 25%;
+      height: 1px;
+      background: var(--line-strong);
+    }
+
+    /* Stem from the main node into the branch. */
+    .tree-branches::after {
+      content: "";
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      width: 1px;
+      height: 12px;
+      background: var(--line-strong);
+      transform: translateX(-50%);
+    }
+
+    .tree-child {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .tree-child::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      width: 1px;
+      height: 15px;
+      background: var(--line-strong);
+    }
+
+    .leaf-button {
+      position: relative;
+      width: 100%;
+      max-width: 185px;
+      min-height: 30px;
+      padding: 5px 8px;
+      border: 0;
+      background: var(--paper);
+      color: var(--muted);
+      font: inherit;
+      font-size: clamp(0.67rem, 0.73vw, 0.76rem);
+      font-weight: 680;
+      line-height: 1.25;
+      text-align: center;
+      cursor: pointer;
+      transition:
+        color 140ms ease,
+        transform 140ms ease;
+    }
+
+    .leaf-button::before {
+      content: "";
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--blue);
+      border-radius: 50%;
+      background: var(--paper);
+      transform: translate(-50%, -50%);
+      transition: background 140ms ease;
+    }
+
+    .leaf-button:hover,
+    .leaf-button:focus-visible,
+    .leaf-button.is-active {
+      color: var(--blue);
+      outline: none;
+      transform: translateY(-1px);
+    }
+
+    .leaf-button:hover::before,
+    .leaf-button:focus-visible::before,
+    .leaf-button.is-active::before {
+      background: var(--blue);
+    }
+
+    .bottom {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+      padding-top: clamp(14px, 2vh, 20px);
+      border-top: 1px solid var(--line);
+    }
+
+    .chips,
+    .connect {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip,
+    .button {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 17px;
+      border-radius: 2px;
+      background: transparent;
+      font-size: clamp(0.76rem, 0.83vw, 0.88rem);
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .chip {
+      min-width: 110px;
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .button {
+      min-width: 116px;
+      color: var(--blue);
+      border: 1px solid rgba(23, 79, 156, 0.58);
+      transition:
+        color 140ms ease,
+        background 140ms ease,
+        transform 140ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      color: var(--paper);
+      background: var(--blue);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    @media (max-height: 790px) and (min-width: 901px) {
+      .page {
+        padding-top: 20px;
+        padding-bottom: 17px;
+        gap: 13px;
+      }
+
+      h1 {
+        margin-bottom: 11px;
+        font-size: clamp(3rem, 5.05vw, 5.4rem);
+      }
+
+      .intro-line {
+        margin-bottom: 17px;
+        font-size: clamp(0.8rem, 0.92vw, 0.95rem);
+      }
+
+      .story-viewer {
+        height: 250px;
+        padding: 16px 19px;
+      }
+
+      .story-copy {
+        font-size: clamp(0.74rem, 0.84vw, 0.87rem);
+        line-height: 1.46;
+      }
+
+      .journey-title {
+        margin-bottom: 13px;
+      }
+
+      .tree-root {
+        gap: 7px;
+      }
+
+      .tree-group {
+        gap: 18px;
+      }
+
+      .node-button {
+        padding-top: 6px;
+        padding-bottom: 6px;
+      }
+
+      .tree-children {
+        gap: 5px 7px;
+      }
+
+      .leaf-button {
+        min-height: 29px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+      }
+
+      .bottom {
+        padding-top: 10px;
+      }
+
+      .chip,
+      .button {
+        min-height: 35px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      html,
+      body {
+        height: auto;
+        overflow-y: auto;
+      }
+
+      body::before {
+        display: none;
+      }
+
+      .page {
+        width: min(calc(100% - 32px), var(--max-width));
+        height: auto;
+        min-height: 100dvh;
+        padding: 30px 0 24px;
+      }
+
+      .content {
+        grid-template-columns: 1fr;
+        align-items: start;
+        gap: 42px;
+      }
+
+      .journey {
+        padding-left: 0;
+      }
+
+      .story-viewer {
+        height: auto;
+        min-height: 290px;
+      }
+
+      .story-inner {
+        overflow: visible;
+      }
+
+      .bottom {
+        grid-template-columns: 1fr;
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 580px) {
+      h1 {
+        font-size: clamp(3.2rem, 17vw, 5rem);
+      }
+
+      .hover-note {
+        display: block;
+        margin-top: 6px;
+      }
+
+      .chips,
+      .connect {
+        width: 100%;
+      }
+
+      .chip,
+      .button {
+        flex: 1 1 auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="content">
+      <section class="intro" aria-labelledby="intro-title">
+        <h1 id="intro-title">Hey, I am <span>Sanjay.</span></h1>
+
+        <p class="intro-line">
+          Backend engineer and love building things. I love curating my thoughts and
+          ideas into products—mostly things that are actually useful.
+          <span class="hover-note">Hover around the tree →</span>
+        </p>
+
+        <article class="story-viewer" aria-live="polite" aria-atomic="true">
+          <div class="story-inner" id="story-inner">
+            <span class="story-kicker" id="story-kicker"></span>
+            <h2 class="story-title" id="story-title"></h2>
+            <div class="story-copy" id="story-copy"></div>
+          </div>
+        </article>
+      </section>
+
+      <aside class="journey" aria-label="Journey tree">
+        <p class="journey-title">Journey so far</p>
+
+        <ul class="tree-root">
+          <li class="tree-group">
+            <button class="node-button" type="button" data-story-id="internet">
+              <span class="node-date">School</span>
+              <h2>Early internet</h2>
+            </button>
+
+            <ul class="tree-branches">
+              <li class="tree-child">
+                <button class="leaf-button" type="button" data-story-id="html">
+                  HTML + Android
+                </button>
+              </li>
+              <li class="tree-child">
+                <button class="leaf-button" type="button" data-story-id="youtube">
+                  YouTube · 8M views
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <li class="tree-group">
+            <button class="node-button" type="button" data-story-id="robotics">
+              <span class="node-date">Hardware → Software</span>
+              <h2>Python + robotics</h2>
+            </button>
+
+            <ul class="tree-branches">
+              <li class="tree-child">
+                <button class="leaf-button" type="button" data-story-id="opencv">
+                  OpenCV + ArUco
+                </button>
+              </li>
+              <li class="tree-child">
+                <button class="leaf-button" type="button" data-story-id="astra">
+                  Astra + IEEE RAS
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <li class="tree-group">
+            <button class="node-button" type="button" data-story-id="rvce">
+              <span class="node-date">2021–2025</span>
+              <h2>RVCE</h2>
+            </button>
+
+            <ul class="tree-branches">
+              <li class="tree-child">
+                <button class="leaf-button" type="button" data-story-id="sweet-design">
+                  Sweet Design Hub
+                </button>
+              </li>
+              <li class="tree-child">
+                <button class="leaf-button" type="button" data-story-id="graduation">
+                  Graduation
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <li class="tree-group">
+            <button class="node-button" type="button" data-story-id="now">
+              <span class="node-date">Now</span>
+              <h2>Current work</h2>
+            </button>
+
+            <ul class="tree-branches">
+              <li class="tree-child">
+                <button class="leaf-button" type="button" data-story-id="happyfox">
+                  HappyFox
+                </button>
+              </li>
+              <li class="tree-child">
+                <button class="leaf-button" type="button" data-story-id="protodeccan">
+                  ProtoDeccan
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </aside>
+    </div>
+
+    <section class="bottom" aria-label="Interests and contact">
+      <div class="chips" aria-label="Interests">
+        <span class="chip">Python</span>
+        <span class="chip">Finance</span>
+        <span class="chip">Hardware</span>
+      </div>
+
+      <nav class="connect" aria-label="Connect with Sanjay">
+        <a class="button" href="./">← Home</a>
+        <a
+          class="button"
+          href="https://www.linkedin.com/in/sanjay-s-8ab0b2264/"
+          target="_blank"
+          rel="noreferrer"
+        >LinkedIn</a>
+        <a
+          class="button"
+          href="https://github.com/xSanYay"
+          target="_blank"
+          rel="noreferrer"
+        >GitHub</a>
+      </nav>
+    </section>
+  </main>
+
+  <script>
+    const stories = {
+      internet: {
+        kicker: "School",
+        title: "Started with the internet",
+        html: `
+          <p>
+            In 5th, I started with HTML—yeah, the web starting point. Bootstrap 2 was
+            the base, and <code>&lt;marquee&gt;</code> was overused everywhere. Post that,
+            I got access to the internet and started exploring Android apps, rooting
+            devices, editing APKs for free gems, and eventually YouTube.
+          </p>
+        `
+      },
+
+      html: {
+        kicker: "HTML + Android",
+        title: "The starting point",
+        html: `
+          <p>
+            In 5th, I started with HTML. Bootstrap 2 was the base, and yeah,
+            <code>&lt;marquee&gt;</code> was overused everywhere. Post that, I got access
+            to the internet and started exploring Android apps, rooting devices, and
+            editing APKs for free gems. I built my first app using a block-kind of
+            platform when I was in 8th grade. Tutorials were hard to find—with that
+            100 MB for ₹45—but that did not stop me there.
+          </p>
+        `
+      },
+
+      youtube: {
+        kicker: "2016",
+        title: "YouTube journey",
+        html: `
+          <p>
+            I started my YouTube journey like every kid in 2016. I created my YouTube
+            channel based on mixing videos with songs. Ended up with a video gaining
+            8 million views back when I had to leave it for my 10th boards. I still
+            remember competing with <em>Sunflower</em>, a song that I love a lot today.
+            <a class="text-link"
+               href="https://www.youtube.com/watch?v=3zSJoPhsHBo"
+               target="_blank"
+               rel="noreferrer">Watch the video</a>.
+          </p>
+        `
+      },
+
+      robotics: {
+        kicker: "Hardware → Software",
+        title: "Python and robotics",
+        html: `
+          <p>
+            Taught myself Python after a hard phase of trying to choose between C++ and
+            Python. Chose Python just because the GUI tools were easy to use. Started
+            with image processing and OpenCV, which then led me to ArUco marker detection,
+            Astra Robotics, and IEEE RAS.
+          </p>
+        `
+      },
+
+      opencv: {
+        kicker: "Computer vision",
+        title: "OpenCV and ArUco markers",
+        html: `
+          <p>
+            Started with image processing and OpenCV, where I hand-coded—yes, I did
+            mention that :)—code to apply contours to images and detect faces. That then
+            led me to coding ArUco marker detection, which had centimetre-level precision.
+          </p>
+        `
+      },
+
+      astra: {
+        kicker: "Robotics",
+        title: "Astra Robotics and IEEE RAS",
+        html: `
+          <p>
+            For our rover, I built in Astra Robotics, where I was a member and then was
+            the software lead. I was the chair of RAS and IEEE Robotics Society, conducted
+            events like 3D printing, and got a grant of $1,300 from global RAS for a
+            workshop.
+          </p>
+        `
+      },
+
+      rvce: {
+        kicker: "2021–2025",
+        title: "RVCE",
+        html: `
+          <p>
+            Graduated from RVCE in 2025 with a degree in Electronics and Communication.
+            During my 5th semester, I did an internship at Sweet Design Hub for a brief
+            time, where my contribution went into the scraping tools.
+          </p>
+        `
+      },
+
+      "sweet-design": {
+        kicker: "Internship",
+        title: "Sweet Design Hub",
+        html: `
+          <p>
+            During my 5th semester, I did an internship at Sweet Design Hub for a brief
+            time, where my contribution went into the scraping tools.
+          </p>
+        `
+      },
+
+      graduation: {
+        kicker: "2025",
+        title: "Graduated from RVCE",
+        html: `
+          <p>
+            Graduated from RVCE in 2025 with a degree in Electronics and Communication.
+          </p>
+        `
+      },
+
+      now: {
+        kicker: "Now",
+        title: "HappyFox and ProtoDeccan",
+        html: `
+          <p>
+            Currently, I work as a backend engineer at HappyFox, building amazing AI
+            products, surrounded by amazing people. I am working on ProtoDeccan as a
+            learning and a venture to create something fun.
+          </p>
+        `
+      },
+
+      happyfox: {
+        kicker: "HappyFox",
+        title: "Backend engineering and AI products",
+        html: `
+          <p>
+            When I was interning at HappyFox, yes, as a backend engineer, I was building
+            an AI PaaS and the first MCP tools out there in the market—back when LLMs
+            used to interpret MCP as a Minecraft server :sob. Currently, I work as a
+            backend engineer at HappyFox, building amazing AI products, surrounded by
+            amazing people.
+            <a class="text-link"
+               href="https://happyfox.com"
+               target="_blank"
+               rel="noreferrer">Visit HappyFox</a>.
+          </p>
+        `
+      },
+
+      protodeccan: {
+        kicker: "ProtoDeccan",
+        title: "A learning and a venture",
+        html: `
+          <p>
+            I am working on ProtoDeccan as a learning and a venture to create something
+            fun.
+            <a class="text-link"
+               href="https://protodeccan.com"
+               target="_blank"
+               rel="noreferrer">Visit ProtoDeccan</a>.
+          </p>
+        `
+      },
+
+      finance: {
+        kicker: "Finance",
+        title: "Ooh yeah, I missed to add",
+        html: `
+          <p>
+            I love financial markets and die for it. This love started way long ago when
+            I first started watching economists not being able to predict the next crisis
+            when they thought they did predict the crisis. Rings a bell? I invest, and I
+            know a good deal of financial markets.
+          </p>
+        `
+      }
+    };
+
+    const storyInner = document.getElementById("story-inner");
+    const storyKicker = document.getElementById("story-kicker");
+    const storyTitle = document.getElementById("story-title");
+    const storyCopy = document.getElementById("story-copy");
+    const controls = [...document.querySelectorAll("[data-story-id]")];
+    const groups = [...document.querySelectorAll(".tree-group")];
+
+    let activeStoryId = "";
+
+    function setStory(storyId, animate = true) {
+      const story = stories[storyId];
+
+      if (!story || storyId === activeStoryId) {
+        return;
+      }
+
+      const applyStory = () => {
+        storyKicker.textContent = story.kicker;
+        storyTitle.textContent = story.title;
+        storyCopy.innerHTML = story.html;
+        storyInner.scrollTop = 0;
+
+        controls.forEach((control) => {
+          control.classList.toggle(
+            "is-active",
+            control.dataset.storyId === storyId
+          );
+        });
+
+        groups.forEach((group) => group.classList.remove("is-active"));
+
+        const activeControl = controls.find(
+          (control) => control.dataset.storyId === storyId
+        );
+
+        activeControl?.closest(".tree-group")?.classList.add("is-active");
+        activeStoryId = storyId;
+      };
+
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      if (!animate || reduceMotion) {
+        applyStory();
+        return;
+      }
+
+      storyInner.classList.add("is-changing");
+
+      window.setTimeout(() => {
+        applyStory();
+        storyInner.classList.remove("is-changing");
+      }, 110);
+    }
+
+    controls.forEach((control) => {
+      const storyId = control.dataset.storyId;
+
+      control.addEventListener("pointerenter", () => setStory(storyId));
+      control.addEventListener("focus", () => setStory(storyId));
+      control.addEventListener("click", () => setStory(storyId));
+    });
+
+    setStory("internet", false);
+  </script>
+</body>
+</html>
