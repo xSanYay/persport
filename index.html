@@ -3,60 +3,173 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Sanjay — backend engineer who loves building useful things." />
+  <meta name="description" content="Sanjay S — Python backend engineer building AI agents, search, and integrations. Work, education, and projects at a glance." />
   <link rel="icon" href="./favicon.png" type="image/png" />
-  <title>Sanjay</title>
+  <link rel="preload" href="./fonts/GeistSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
+  <title>Sanjay S — Backend engineer</title>
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: #17191c;
-      background: #f3efe6;
-      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
+    @font-face {
+      font-family: "Geist Serif";
+      src: url("./fonts/GeistSerif-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
     }
-    main { max-width: 680px; margin: 0 auto; padding: clamp(64px, 12vh, 120px) 28px 48px; }
-    h1 { margin: 0 0 24px; font-size: clamp(3rem, 9vw, 4.5rem); line-height: 1.05; letter-spacing: -.06em; }
-    h1 span, a { color: #174f9c; }
-    p { color: #666965; margin: 0 0 20px; }
-    .intro { font-size: 1.15rem; max-width: 520px; }
-    a { text-underline-offset: 4px; }
-    a:hover { color: #103b77; }
-    a:focus-visible { outline: 2px solid #174f9c; outline-offset: 5px; }
-    section { margin-top: 48px; }
-    h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; margin: 0 0 20px; }
-    .project { display: block; padding: 18px 0; border-top: 1px solid rgba(23,25,28,.2); text-decoration: none; }
-    .project strong { font-weight: 600; }
-    .project span { display: block; color: #666965; margin-top: 4px; font-size: .95rem; }
-    .project:hover strong { text-decoration: underline; text-underline-offset: 4px; }
-    footer { margin-top: 48px; border-top: 1px solid rgba(23,25,28,.2); padding-top: 24px; }
-    nav { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+    :root { color-scheme: light; --paper: #f3efe6; --ink: #17191c; --muted: #626462; --blue: #174f9c; --line: rgba(23,25,28,.18); }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Geist Serif", Georgia, serif; font-size: 16px; line-height: 1.45; }
+    main { max-width: 1160px; margin: auto; padding: clamp(28px, 4vh, 48px) 32px 28px; }
+    a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    a:hover { text-decoration: underline; }
+    a:focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; }
+    header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+    h1 { margin: 2px 0 10px; font-size: clamp(40px, 4.8vw, 60px); line-height: 1; font-weight: 400; letter-spacing: -.045em; }
+    .eyebrow, .label, .meta, .stack { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    .eyebrow { margin: 0 0 10px; color: var(--muted); font-size: 12px; letter-spacing: .04em; }
+    .intro { margin: 0; font-size: 18px; color: var(--muted); }
+    nav { display: flex; flex-wrap: wrap; gap: 12px 22px; }
+    nav a { white-space: nowrap; }
+    .columns { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 56px; padding: 28px 0; }
+    .label { margin: 0 0 14px; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
+    h3 { margin: 0; font-size: 23px; font-weight: 400; line-height: 1.2; }
+    h3 a { text-decoration: none; }
+    .row-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .meta { color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .date { white-space: nowrap; }
+    p { margin: 6px 0 0; }
+    .role { color: var(--muted); }
+    .contributions { padding-left: 18px; margin: 14px 0; }
+    .contributions li { padding-left: 3px; margin: 5px 0; }
+    .synapse { margin-top: 18px; padding: 12px 16px; border-left: 2px solid var(--blue); background: rgba(23,79,156,.035); }
+    .synapse h4 { margin: 0; font-size: 19px; font-weight: 400; }
+    .synapse p { font-size: 15px; }
+    .capabilities { color: var(--muted); line-height: 1.6; }
+    .previous { margin-top: 26px; }
+    .compact-list { margin: 0; padding: 0; list-style: none; }
+    .compact-list li + li { margin-top: 12px; }
+    .compact-list strong { font-weight: 400; }
+    .compact-list .meta { display: block; margin-top: 3px; }
+    .education .details { margin-top: 10px; }
+    .college { padding-left: 0; margin: 12px 0 0; list-style: none; font-size: 15px; color: var(--muted); }
+    .college li + li { margin-top: 4px; }
+    .achievement { margin-top: 12px; font-size: 13px; color: var(--blue); }
+    .projects { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); }
+    .project { display: grid; grid-template-columns: 135px minmax(0, 1fr); gap: 12px; margin-top: 12px; }
+    .project dt, .project dd { margin: 0; }
+    .project dt a { text-decoration: none; }
+    .project dd { color: var(--muted); font-size: 14px; }
+    footer { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; border-top: 1px solid var(--line); padding-top: 18px; }
+    .stack { margin: 0; max-width: 680px; font-size: 12px; color: var(--muted); line-height: 1.8; }
+    .stack strong { color: var(--ink); font-weight: 500; margin-right: 12px; }
+    footer a { flex-shrink: 0; }
+    @media (min-width: 801px) and (max-height: 800px) {
+      main { padding-top: 20px; padding-bottom: 20px; }
+      header { padding-bottom: 20px; }
+      h1 { font-size: 48px; }
+      .columns { padding-top: 20px; padding-bottom: 20px; }
+      .label { margin-bottom: 10px; }
+      .contributions { margin: 10px 0; }
+      .contributions li { margin: 3px 0; }
+      .synapse { margin-top: 12px; padding-top: 10px; padding-bottom: 10px; }
+      .previous { margin-top: 18px; }
+    }
+    @media (max-width: 800px) {
+      main { padding: 28px 24px; }
+      header { align-items: start; flex-direction: column; gap: 20px; }
+      .columns { grid-template-columns: 1fr; gap: 30px; }
+      footer { align-items: start; flex-direction: column; gap: 16px; }
+    }
+    @media (max-width: 420px) {
+      .row-heading { flex-wrap: wrap; gap: 4px 12px; }
+      .project { grid-template-columns: 1fr; gap: 3px; }
+    }
   </style>
 </head>
 <body>
   <main>
-    <h1>Hey, I’m <span>Sanjay.</span></h1>
-    <p class="intro">Backend engineer. I like turning ideas into useful things.</p>
-    <p>Building AI products at HappyFox and working on ProtoDeccan.</p>
-    <a href="./story.html">My story →</a>
+    <header>
+      <div>
+        <p class="eyebrow">@xSanYay · Bengaluru</p>
+        <h1>Sanjay S.</h1>
+        <p class="intro">Python backends, AI agents, search &amp; integrations.</p>
+      </div>
+      <nav aria-label="Explore and connect">
+        <a href="./story.html">My story →</a>
+        <a href="https://github.com/xSanYay" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/sanjay-s-8ab0b2264/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+      </nav>
+    </header>
 
-    <section aria-labelledby="projects-title">
-      <h2 id="projects-title">Things I’m building</h2>
-      <a class="project" href="https://protodeccan.com" target="_blank" rel="noreferrer">
-        <strong>ProtoDeccan ↗</strong>
-        <span>My own venture, and a place to keep learning.</span>
-      </a>
-      <a class="project" href="https://github.com/xSanYay" target="_blank" rel="noreferrer">
-        <strong>More on GitHub ↗</strong>
-        <span>Projects, experiments, and things I’m figuring out.</span>
-      </a>
-    </section>
+    <div class="columns">
+      <div>
+        <section aria-labelledby="work-title">
+          <h2 class="label" id="work-title">At work</h2>
+          <div class="row-heading">
+            <h3><a href="https://happyfox.com" target="_blank" rel="noreferrer">HappyFox ↗</a></h3>
+            <span class="meta date">2024–Present</span>
+          </div>
+          <p class="role">Backend engineer · AI products</p>
+          <ul class="contributions">
+            <li>Helped build the autonomous agent fleet.</li>
+            <li>Architected the product’s self-service flow.</li>
+            <li>Worked on ongoing product improvements.</li>
+          </ul>
+          <div class="synapse">
+            <h4>Synapse</h4>
+            <p>Worked on an integration platform ahead of its time.</p>
+            <p class="capabilities">Connectors · OpenAPI integration builder · Reusable package · LLM connectors · MCP support for existing integrations</p>
+          </div>
+        </section>
+
+        <section class="previous" aria-labelledby="previous-title">
+          <h2 class="label" id="previous-title">Previously</h2>
+          <ul class="compact-list">
+            <li><strong>Sweet Design Hub</strong> · AI/ML intern
+              <span class="meta">Jun–Jul 2024 · Stock news, sentiment analysis &amp; market-data scraping</span>
+            </li>
+            <li><strong>IIT Guwahati</strong> · Project intern
+              <span class="meta">Dec 2023–Mar 2024 · Image processing, dataset annotation &amp; YOLO</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <div>
+        <section class="education" aria-labelledby="education-title">
+          <h2 class="label" id="education-title">Education</h2>
+          <h3>RV College of Engineering</h3>
+          <p>BE · Electronics &amp; Communication</p>
+          <p class="meta details">2021–2025 · CGPA 8.14</p>
+          <ul class="college">
+            <li>Software Lead · Astra Robotics</li>
+            <li>Chair · IEEE RAS, RVCE</li>
+          </ul>
+          <p class="achievement">Smart India Hackathon · Grand finalist, 2023</p>
+        </section>
+
+        <section class="projects" aria-labelledby="projects-title">
+          <h2 class="label" id="projects-title">Building &amp; exploring</h2>
+          <dl>
+            <div class="project">
+              <dt><a href="https://protodeccan.com" target="_blank" rel="noreferrer">ProtoDeccan ↗</a></dt>
+              <dd>A 3D-printing venture.</dd>
+            </div>
+            <div class="project">
+              <dt>Spendwise</dt>
+              <dd>Personal finance from transaction emails &amp; statements.</dd>
+            </div>
+            <div class="project">
+              <dt>Local AI</dt>
+              <dd>Open models, personal agents &amp; speech tools.</dd>
+            </div>
+          </dl>
+        </section>
+      </div>
+    </div>
 
     <footer>
-      <nav aria-label="Connect with Sanjay">
-        <a href="https://www.linkedin.com/in/sanjay-s-8ab0b2264/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-        <a href="https://github.com/xSanYay" target="_blank" rel="noreferrer">GitHub ↗</a>
-      </nav>
+      <p class="stack"><strong>Tools</strong> Python · Django · React · PostgreSQL · OpenSearch · AWS · Docker · Linux</p>
+      <a href="./story.html">The longer story →</a>
     </footer>
   </main>
 </body>
